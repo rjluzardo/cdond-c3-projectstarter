@@ -17,4 +17,4 @@
       TYPEORM_MIGRATIONS: "{{ lookup('env','TYPEORM_MIGRATIONS') }}"
       TYPEORM_ENTITIES: "{{ lookup('env','TYPEORM_ENTITIES') }}"
   roles:
-    - configure-prometheus-node-explorer
+    - configure-prometheus-node-exporter

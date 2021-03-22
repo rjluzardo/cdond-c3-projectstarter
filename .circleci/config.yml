@@ -358,6 +358,7 @@ jobs:
             cat backend/.env
             cat /tmp/.circleci/ansible/inventory.txt
             ansible-playbook -i /tmp/.circleci/ansible/inventory.txt .circleci/ansible/deploy-backend.yml
+            ansible-playbook -i /tmp/.circleci/ansible/inventory.txt .circleci/ansible/configure-prometheus.yml
       - destroy-environment:
           workflow_id: ${CIRCLE_WORKFLOW_ID}
       - revert-migrations:

@@ -408,13 +408,11 @@ jobs:
         - run:
             name: Update cloudfront distribution
             command: |
-              aws cloudformation update-stack --use-previous-template --stack-name udapeople-cloudfront --parameters parameterKey=WorkflowID,ParameterValue=${CIRCLE_WORKFLOW_ID},UsePreviousValue=false
-              
-              #aws cloudformation deploy --template-file .circleci/files/cloudfront.yml --stack-name udapeople-cloudfront --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID}"
-        - destroy-environment:
-            workflow_id: ${CIRCLE_WORKFLOW_ID}
-        - revert-migrations:
-            workflow_id: ${CIRCLE_WORKFLOW_ID}    
+              aws cloudformation deploy --template-file .circleci/files/cloudfront.yml --stack-name udapeople-cloudfront --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID}"
+        #- destroy-environment:
+        #    workflow_id: ${CIRCLE_WORKFLOW_ID}
+        #- revert-migrations:
+        #    workflow_id: ${CIRCLE_WORKFLOW_ID}    
   cleanup:
     docker:
         - image: amazon/aws-cli      
@@ -430,10 +428,10 @@ jobs:
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
               aws s3 rb s3://udapeople-frontend-${OldWorkflowID} --force
-              #aws s3 rm s3://udapeople-frontend-${OldWorkflowID} --recursive
+
               aws cloudformation delete-stack --stack-name backend-${OldWorkflowID}
               aws cloudformation delete-stack --stack-name frontend-${OldWorkflowID}
-              #aws cloudfront delete-stack --stack-name udacity-cloudfront-${OldWorkflowID}
+
             fi
 workflows:
   default:

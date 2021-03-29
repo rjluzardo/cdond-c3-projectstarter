@@ -151,8 +151,8 @@ jobs:
             name: Run back end audit
             command: |
               cd backend
-              npm audit fix --audit-level=critical --force
-              #npm audit --audit-level=critical
+              #npm audit fix --audit-level=critical --force
+              npm audit --audit-level=critical
         - slack/notify:
             channel: testing-circleci
             event: fail

@@ -123,7 +123,8 @@ jobs:
           name: Run front end audit
           command: |
             cd frontend
-            npm audit fix --audit-level=critical --force
+            npm audit --audit-level=critical
+            #npm audit fix --audit-level=critical --force
       - slack/notify:
           channel: testing-circleci
           event: pass

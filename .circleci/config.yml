@@ -299,7 +299,7 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters Name=tag:Name,Values=backend-*" --output text)
+            BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters "Name=tag:Name,Values=backend-*" --output text)
             echo ${BACKEND_IP}  
             export API_URL="https://${BACKEND_IP}:3030"
             echo "${API_URL}"

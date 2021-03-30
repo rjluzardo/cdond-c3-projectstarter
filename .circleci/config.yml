@@ -123,6 +123,7 @@ jobs:
           name: Run front end audit
           command: |
             cd frontend
+            #npm audit --audit-level=critical
             npm audit fix --audit-level=critical --force
       - slack/notify:
           channel: testing-circleci
@@ -203,7 +204,6 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:project,Values=udacity" \
               --output text >> .circleci/ansible/inventory.txt
-            ls -la .circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             ls ~/
       - persist_to_workspace:
@@ -299,10 +299,7 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            BACKEND_IP=$(aws ec2 describe-instances \
-              --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --filters "Name=tag:project,Values=udacity" \
-              --output text)
+            BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters Name=tag:Name,Values=backend-*" --output text)
             echo ${BACKEND_IP}  
             export API_URL="https://${BACKEND_IP}:3030"
             echo "${API_URL}"
@@ -467,5 +464,5 @@ workflows:
           requires: [deploy-backend, deploy-frontend]
       - cloudfront-update:
           requires: [smoke-test]
-#      - cleanup:
-#          requires: [cloudfront-update]
+      - cleanup:
+          requires: [cloudfront-update]

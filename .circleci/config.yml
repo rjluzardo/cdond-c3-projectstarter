@@ -173,7 +173,7 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
-      - checkout
+      #- checkout
       
       - run:
           name: Ensure back-end infrastructure exists
@@ -300,8 +300,8 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            #BACKEND_IP=$(grep -v "[web]" /tmp/.circleci/ansible/inventory.txt)
-            BACKEND_IP=aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress"  --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID}"  --output text
+            BACKEND_IP=$(grep -v "[web]" /tmp/.circleci/ansible/inventory.txt)
+            # BACKEND_IP=aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress"  --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID}"  --output text
             echo $BACKEND_IP
             export API_URL="https://${BACKEND_IP}:3030"
             echo "${API_URL}"

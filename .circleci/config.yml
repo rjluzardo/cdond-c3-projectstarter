@@ -302,7 +302,7 @@ jobs:
             BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters "Name=tag:Name,Values=backend-*" --output text)
             echo ${BACKEND_IP}  
 
-            export API_URL=$(curl -H "token: ${CIRCLE_WORKFLOW_ID}" --request GET https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID)
+            export API_URL=$(curl -H dee226c6-0908-4b16-8db8-ae78275c2360" --request GET https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID)
             echo "${API_URL}"
             echo "${API_URL}" >> "frontend/.env"
             cd frontend
@@ -318,10 +318,10 @@ jobs:
           name: Copy to S3
           command: |
             aws s3 cp ./frontend/dist s3://udapeople-frontend-${CIRCLE_WORKFLOW_ID} --recursive
-      - destroy-environment:
-          workflow_id: ${CIRCLE_WORKFLOW_ID}
-      - revert-migrations:
-          workflow_id: ${CIRCLE_WORKFLOW_ID}          
+      #- destroy-environment:
+      #    workflow_id: ${CIRCLE_WORKFLOW_ID}
+      #- revert-migrations:
+      #    workflow_id: ${CIRCLE_WORKFLOW_ID}          
 
   deploy-backend:
     docker:

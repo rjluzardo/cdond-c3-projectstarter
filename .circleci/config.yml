@@ -183,10 +183,10 @@ jobs:
       - run:
           name: store URL
           command: |
-              BK_URLS=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress"  --filters "Name=tag:Name,Values=backend-${CIRCLE_WORKFLOW_ID}"  --output text)
-              echo "BK_URLS=$BK_URLS"
+              BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters "Name=tag:Name,Values=backend-*" --output text)
+              echo "BACKEND_IP=$BACKEND_IP"
               echo ${CIRCLE_WORKFLOW_ID}
-              curl -H "Content-Type: text/plain" -H "token: dee226c6-0908-4b16-8db8-ae78275c2360" --request PUT --data "$BK_URLS" https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID}
+              curl -H "Content-Type: text/plain" -H "token: dee226c6-0908-4b16-8db8-ae78275c2360" --request PUT --data "$BACKEND_IP" https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID}
       - run:
           name: Ensure front-end infrastructure exist
           command: |
@@ -299,8 +299,8 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters "Name=tag:Name,Values=backend-*" --output text)
-            echo ${BACKEND_IP}  
+            #BACKEND_IP=$(aws ec2 describe-instances --region us-west-2 --query "Reservations[*].Instances[*].PublicIpAddress" --filters "Name=tag:Name,Values=backend-*" --output text)
+            #echo ${BACKEND_IP}  
 
             export API_URL=$(curl -H "token: dee226c6-0908-4b16-8db8-ae78275c2360" --request GET https://api.memstash.io/values/url_${CIRCLE_WORKFLOW_ID})
             echo "${API_URL}"
@@ -461,7 +461,7 @@ workflows:
       - run-migrations:
           requires: [configure-infrastructure]
       - deploy-frontend:
-          requires: [deploy-backend]
+          requires: [configure-infrastructure]
       - deploy-backend:
           requires: [run-migrations]
       - smoke-test:

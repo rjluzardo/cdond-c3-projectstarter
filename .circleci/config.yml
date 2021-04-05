@@ -415,10 +415,7 @@ jobs:
             command: |
               workflow_id=${CIRCLE_WORKFLOW_ID}
               echo $workflow_id
-              aws cloudformation deploy \
-              --template-file .circleci/files/cloudfront.yml \
-              --stack-name udapeople-cloudfront \ 
-              --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID}"
+              aws cloudformation deploy --template-file .circleci/files/cloudfront.yml --stack-name udapeople-cloudfront --parameter-overrides WorkflowID="${CIRCLE_WORKFLOW_ID}"
         #aws cloudformation update-stack --use-previous-template --stack-name cloudfront --parameters ParameterKey=WorkflowID,ParameterValue=${CIRCLE_WORKFLOW_ID:0:7}
         #- destroy-environment:
         #    workflow_id: ${CIRCLE_WORKFLOW_ID}

@@ -307,7 +307,6 @@ jobs:
             echo = "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> "frontend/.env"
             cd frontend
-            cat frontend/.env
             npm install
             npm run build
       #- run:

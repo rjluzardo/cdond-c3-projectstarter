@@ -55,6 +55,13 @@ jobs:
       - restore_cache:
           keys: [frontend-build]
       - run:
+          name: clean sha
+          command: |
+            cd frontend
+            npm i -g npm
+            rm -rf node_modules/
+            npm i   
+      - run:
           name:
           command: |
             cd frontend

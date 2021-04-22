@@ -59,7 +59,7 @@ jobs:
           user: root
           command: |
             cd frontend
-            ls -la /usr/local/lib/node_modules
+            ls -la /home/circleci/project/frontend/node_modules
             #npm i -g npm
             #rm package-lock.json
             #npm cache clear --force

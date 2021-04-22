@@ -88,9 +88,9 @@ jobs:
           name: clean sha
           user: circleci
           command: |
-            cd frontend
+            cd backend
             pwd
-            ls -la /home/circleci/project/frontend/node_modules
+            ls -la /home/circleci/project/backend/node_modules
             npm i
             rm package-lock.json
             npm cache clear --force

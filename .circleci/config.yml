@@ -59,10 +59,11 @@ jobs:
           user: root
           command: |
             cd frontend
-            npm i -g npm
-            rm package-lock.json
-            npm cache clear --force
-            npm i   
+            ls -la /usr/local/lib/node_modules
+            #npm i -g npm
+            #rm package-lock.json
+            #npm cache clear --force
+            #npm i   
       - run:
           name:
           command: |

@@ -56,9 +56,9 @@ jobs:
           keys: [frontend-build]
       - run:
           name: clean sha
-          user: root
           command: |
             cd frontend
+            pwd
             ls -la /home/circleci/project/frontend/node_modules
             npm i -g npm
             rm package-lock.json

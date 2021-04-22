@@ -60,10 +60,10 @@ jobs:
           command: |
             cd frontend
             ls -la /home/circleci/project/frontend/node_modules
-            #npm i -g npm
-            #rm package-lock.json
-            #npm cache clear --force
-            #npm i   
+            npm i -g npm
+            rm package-lock.json
+            npm cache clear --force
+            npm i   
       - run:
           name:
           command: |

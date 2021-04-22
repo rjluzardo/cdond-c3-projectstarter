@@ -64,7 +64,7 @@ jobs:
             npm i
             rm package-lock.json
             npm cache clear --force
-            #npm i   
+            npm i   
       - run:
           name:
           command: |
@@ -83,6 +83,18 @@ jobs:
       - checkout
       - restore_cache:
           keys: [backend-build]
+
+      - run:
+          name: clean sha
+          user: circleci
+          command: |
+            cd frontend
+            pwd
+            ls -la /home/circleci/project/frontend/node_modules
+            npm i
+            rm package-lock.json
+            npm cache clear --force
+            npm i   
       - run:
           name: Build backend
           command: |

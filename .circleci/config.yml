@@ -56,6 +56,7 @@ jobs:
           keys: [frontend-build]
       - run:
           name: clean sha
+          user: root
           command: |
             cd frontend
             npm i -g npm

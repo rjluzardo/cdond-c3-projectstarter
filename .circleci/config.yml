@@ -61,6 +61,7 @@ jobs:
             cd frontend
             pwd
             ls -la /home/circleci/project/frontend/node_modules
+            rm -rf /home/circleci/project/frontend/node_modules
             npm i
             rm package-lock.json
             npm cache clear --force
@@ -91,6 +92,7 @@ jobs:
             cd backend
             pwd
             ls -la /home/circleci/project/backend/node_modules
+            rm -rf /home/circleci/project/frontend/node_modules
             npm i
             rm package-lock.json
             npm cache clear --force

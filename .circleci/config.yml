@@ -60,13 +60,11 @@ jobs:
             cd frontend
             pwd
             #ls -la /home/circleci/project/frontend/node_modules
-            rm -rf /home/circleci/project/frontend/node_modules
+            #rm -rf /home/circleci/project/frontend/node_modules
             npm i
             rm package-lock.json
-            npm cache clear --force
-            #npm cache verify
             #npm cache clean
-            npm i   
+            #npm i
       - run:
           name:
           command: |
@@ -88,18 +86,17 @@ jobs:
 
       - run:
           name: clean sha
-          user: circleci
           command: |
             cd backend
             pwd
             #ls -la /home/circleci/project/backend/node_modules
-            rm -rf /home/circleci/project/frontend/node_modules
-            npm i
-            rm package-lock.json
-            npm cache clear --force
+            #rm -rf /home/circleci/project/frontend/node_modules
+            #npm i
+            #rm package-lock.json
+            #npm cache clear --force
             #npm cache verify
-            #npm cache clean
-            npm i   
+            npm cache clean
+            #npm i   
       - run:
           name: Build backend
           command: |

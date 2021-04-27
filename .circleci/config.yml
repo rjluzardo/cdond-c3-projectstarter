@@ -100,7 +100,6 @@ jobs:
       - run:
           name: Build backend
           command: |
-
             cd backend
             npm install
             npm run build
@@ -177,6 +176,7 @@ jobs:
             name: Run back end audit
             command: |
               cd backend
+              npm install #PROBANDO PARA ERROR SCAN-BACKEND -QUITAR SI FUNCIONA
               npm audit fix --audit-level=critical --force
               #npm audit --audit-level=critical
         - slack/notify:

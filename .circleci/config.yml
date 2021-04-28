@@ -290,8 +290,8 @@ jobs:
             npm config delete https-proxy
             set HTTP_PROXY=null
             set HTTPS_PROXY=null
-            npm install latest-version #AGREGANDO PARA RESOLVER PROBLEMA CON RUN MIGRATIONS
-            npm update #AGREGANDO PARA RESOLVER PROBLEMA CON RUN MIGRATIONS
+            #npm install latest-version #AGREGANDO PARA RESOLVER PROBLEMA CON RUN MIGRATIONS
+            #npm update #AGREGANDO PARA RESOLVER PROBLEMA CON RUN MIGRATIONS
             touch migrations_log.txt
             npm run migrations >> migrations_log.txt
             cat migrations_log.txt

@@ -293,7 +293,7 @@ jobs:
             #npm install latest-version #AGREGANDO PARA RESOLVER PROBLEMA CON RUN MIGRATIONS
             #npm update #AGREGANDO PARA RESOLVER PROBLEMA CON RUN MIGRATIONS
             touch migrations_log.txt
-            npm run migrations >> migrations_log.txt
+            #npm run migrations >> migrations_log.txt
             cat migrations_log.txt
             echo "log complete"
       - run:

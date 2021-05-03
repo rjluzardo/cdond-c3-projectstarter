@@ -91,6 +91,7 @@ jobs:
             pwd
             #ls -la /home/circleci/project/backend/node_modules
             rm -rf /home/circleci/project/frontend/node_modules
+            npm i
             #npm install
             #rm package-lock.json
             #npm cache clear --force

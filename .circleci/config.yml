@@ -102,6 +102,7 @@ jobs:
           name: Build backend
           command: |
             cd backend
+            npm fund
             npm install
             npm run build
       - save_cache:

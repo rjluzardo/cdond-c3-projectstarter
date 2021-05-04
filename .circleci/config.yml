@@ -101,11 +101,11 @@ jobs:
       - run:
           name: Build backend
           command: |
-            sudo npm install webpack-dev-server -g
+            npm install 
             cd backend 
-            sudo npm i 
+            npm i 
             #npm install
-            sudo npm run build
+            npm run build
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build

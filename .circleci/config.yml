@@ -91,21 +91,21 @@ jobs:
             pwd
             #ls -la /home/circleci/project/backend/node_modules
             rm -rf /home/circleci/project/frontend/node_modules
-            npm i
+            #npm i
             #npm install
             #rm package-lock.json
             #npm cache clear --force
             #npm cache verify
             npm cache clean --force
-            npm install   
+            #npm install   
       - run:
           name: Build backend
           command: |
-            sudo npm install webpack-dev-server -g
+            npm install webpack-dev-server -g
             cd backend 
-            sudo npm i 
+            npm i 
             #npm install
-            sudo npm run build
+            npm run build
       - save_cache:
           paths: [backend/node_modules]
           key: backend-build

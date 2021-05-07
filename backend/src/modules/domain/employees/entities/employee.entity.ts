@@ -1,5 +1,5 @@
-//import * as moment from 'moment-timezone';
-const moment = require('moment');
+import * as moment from 'moment-timezone';
+//const moment = require('moment');
 import { AggregateRoot } from '../../../common/entities';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { CreateEmployee } from '../commands/create-employee.command';

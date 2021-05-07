@@ -88,15 +88,9 @@ jobs:
           command: |
             cd backend
             pwd
-            #ls -la /home/circleci/project/backend/node_modules
             rm -rf /home/circleci/project/frontend/node_modules
-            #npm i
-            #npm install
-            #rm package-lock.json
-            #npm cache clear --force
-            #npm cache verify
             npm cache clean --force
-            #npm install   
+
       - run:
           name: Build backend
           command: |
@@ -118,7 +112,6 @@ jobs:
       - run:
           name: Run front end tests
           command: |
-            
             ls frontend/
             cd frontend
             npm install
@@ -136,6 +129,7 @@ jobs:
           name: Run back end tests
           command: |
             cd backend
+            npm install
             npm run test
 
   scan-frontend:

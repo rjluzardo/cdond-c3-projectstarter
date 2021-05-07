@@ -64,7 +64,7 @@ jobs:
             npm i
             rm package-lock.json
             npm cache clean --force
-            #npm i
+            tail /home/circleci/.npm/_logs/2021-05-07T15_48_00_443Z-debug.log
       - run:
           name:
           command: |

@@ -64,7 +64,6 @@ jobs:
             npm i
             rm package-lock.json
             npm cache clean --force
-            tail /home/circleci/.npm/_logs/2021-05-07T15_48_00_443Z-debug.log
       - run:
           name:
           command: |
@@ -101,9 +100,9 @@ jobs:
       - run:
           name: Build backend
           command: |
-            npm install 
+            #npm install 
             cd backend 
-            npm i 
+            #npm i 
             #npm install
             npm run build
       - save_cache:
